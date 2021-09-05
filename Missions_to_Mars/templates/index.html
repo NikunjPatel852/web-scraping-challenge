@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/draft" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Mars Info -->
+
+    <!-- The only way I could get the rendered data was to use a for loop.
+        I was not able to access it directly using mars_results.latestheadling.
+        I am not sure why, but I think is probably related to how I set up my output dictonary -->
+
+    {% for item in mars_web %}
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h5>{{item.news_data}}</h5>
+        <p>{{item.news_par}}</p>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <h2>Featured Mars Image</h2>
+        <img src = {{item.featured_image_url)}} height=400px width=600 px>
+        <p></p>
+      </div>
+        <div class="row">
+          <h3>Mars Facts</h3>
+          <p> {{item.mars_facts| safe}} </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</body>
+
+</html>
